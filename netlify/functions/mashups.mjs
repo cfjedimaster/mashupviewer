@@ -13,7 +13,7 @@ function parseRelativeTime(timeStr) {
   if (!timeStr) return null;
 
   const lower = timeStr.toLowerCase();
-  const match = lower.match(/(\d+)\s*(s|sec|second|m|min|minute|h|hr|hour|d|day)\b/);
+  const match = lower.match(/(\d+)\s*(s|sec|second|m|min|minute|h|hr|hour|d|day)s?\b/);
   if (!match) return null;
 
   const amount = parseInt(match[1], 10);
