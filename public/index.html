@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Fresh Cuts | 24-Hour Mashup Feed</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-mark" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div>
+        <h1>Fresh Cuts</h1>
+        <p class="subtitle">The latest music mashups dropped in the last 24 hours</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="status" class="status-message" role="status" aria-live="polite">
+      Scanning the crates for fresh mashups...
+    </div>
+
+    <section id="results" class="video-grid" aria-label="Mashup videos"></section>
+  </main>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>

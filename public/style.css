@@ -1,0 +1,283 @@
+:root {
+  color-scheme: dark;
+  --bg-main: #0b0c10;
+  --bg-card: #151722;
+  --border-card: #282c3e;
+  --text-primary: #f2f4f8;
+  --text-muted: #9aa0b8;
+  --accent-pink: #ff2a85;
+  --accent-cyan: #00f0ff;
+  --badge-yt: #ff0033;
+  --badge-tt: #00f2fe;
+
+  scrollbar-color: #3a3f58 #0b0c10;
+  scrollbar-width: thin;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-main);
+  background-image: radial-gradient(circle at 50% 0%, #1f1635 0%, transparent 60%);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Header & Equalizer Icon */
+.site-header {
+  border-block-end: 1px solid var(--border-card);
+  background: rgba(11, 12, 16, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 1.75rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.logo-mark {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 36px;
+}
+
+.logo-mark span {
+  width: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to top, var(--accent-pink), var(--accent-cyan));
+  animation: bounce 1.2s ease-in-out infinite;
+}
+
+.logo-mark span:nth-child(1) { height: 60%; animation-delay: 0s; }
+.logo-mark span:nth-child(2) { height: 100%; animation-delay: 0.2s; }
+.logo-mark span:nth-child(3) { height: 45%; animation-delay: 0.4s; }
+.logo-mark span:nth-child(4) { height: 80%; animation-delay: 0.1s; }
+
+@keyframes bounce {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.85rem;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #ffffff, var(--accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  margin: 0.15rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Main Content & Status */
+.container {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.status-message {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  padding: 2rem 0;
+}
+
+.status-message.error {
+  color: #ff6b81;
+}
+
+/* Video Grid & Cards */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.75rem;
+}
+
+.video-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-pink);
+}
+
+.player-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* TikTok Animated Preview Card */
+.tiktok-preview {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-decoration: none;
+  background: #08090d;
+}
+
+.tiktok-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.tiktok-preview:hover img {
+  transform: scale(1.04);
+}
+
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 12, 16, 0.25);
+  transition: background 0.2s ease;
+}
+
+.play-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(11, 12, 16, 0.78);
+  border: 2px solid var(--accent-cyan);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  padding-inline-start: 3px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.tiktok-preview:hover .play-icon {
+  transform: scale(1.1);
+  background: var(--accent-pink);
+  border-color: var(--accent-pink);
+}
+
+.watch-pill {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(11, 12, 16, 0.82);
+  backdrop-filter: blur(6px);
+  color: var(--text-primary);
+  border: 1px solid rgba(0, 242, 254, 0.45);
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.tiktok-preview:hover .watch-pill {
+  background: var(--accent-pink);
+  border-color: var(--accent-pink);
+}
+
+.card-body {
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.badge {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+}
+
+.badge.youtube {
+  background: rgba(255, 0, 51, 0.18);
+  color: #ff6680;
+  border: 1px solid rgba(255, 0, 51, 0.4);
+}
+
+.badge.tiktok {
+  background: rgba(0, 242, 254, 0.14);
+  color: var(--badge-tt);
+  border: 1px solid rgba(0, 242, 254, 0.35);
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.card-title a:hover,
+.card-author a:hover {
+  text-decoration: underline;
+}
+
+.card-author {
+  margin-block-start: auto;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.card-author a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
